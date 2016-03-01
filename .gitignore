@@ -1,0 +1,6 @@
+node_modules/
+npm-debug*
+app_api/config.js
+dist/
+logs/
+*.bak
