@@ -26,7 +26,10 @@
 	// LOAD SCHEMAS AND MODELS
 	fs.readdirSync(path.join(__dirname,'models')).forEach(function requireFile(file)
 	{
-		require('./models/'+file);
+		if (file!=='definitions')
+		{
+			require('./models/'+file);
+		}
 	});
 
 	// set default connection options, but let the config file override them

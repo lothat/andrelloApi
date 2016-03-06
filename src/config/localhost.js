@@ -28,14 +28,14 @@
 			},
 			mongodb :
 			{
-				db: 'mongodb://localhost/EDVDashboard',
+				db: 'mongodb://localhost/Andrello',
 				collection: 'errorlog'
 			}
 		},
 		mongo :
 		{
 			hostname: 'localhost',
-			database: 'EDVDashboard'// ,
+			database: 'Andrello'// ,
 			// auth : 'eyJ1c2VyaWQiOiJvcHNkc2hiIiwicGFzc3dvcmQiOiJQYSQkdzByZCIsInNvdXJjZSI6ImFkbWluIn0='
 		}
 	};
