@@ -31,9 +31,11 @@
 		{
 			var originIsOk = (okOrigins.indexOf(origin) !== -1);
 
+			originIsOk = !!1;
+
 			callback(null, originIsOk);
 		},
-		methods: ['GET','PUT']
+		methods: ['DELETE', 'GET','POST','PUT']
 	};
 
 	if (config.environment === 'production')

@@ -98,7 +98,9 @@
 			// userId: req.params.userId // req.user.sub
 		};
 
-		Story.remove(query, omit(req.body, '_id'), function findDeleteStory(err, doc)
+		console.log('Deleting story: ', req.params.id);
+
+		Story.remove(query, function findDeleteStory(err, doc)
 		{
 			if (err)
 			{
@@ -126,6 +128,8 @@
 		};
 		var newstory = new Story(newStoryObj);
 
+		console.log('creating story: ',JSON.stringify(newstory));
+
 		newstory.save(function saveStory(err, createdStory)
 		{
 			if (err)
@@ -145,21 +149,29 @@
 		var keys;
 		var flds = {};
 
-		switch (typeof fields)
+		if (object && object.keys)
 		{
-			case 'string':
+			switch (typeof fields)
 			{
-				flds[fields] = true;
-				break;
-			}
+				case 'string':
+				{
+					flds[fields] = true;
+					break;
+				}
 
-			case 'object':
+				case 'object':
+				{
+					flds = fields;
+					break;
+				}
+			}
+			keys = object.keys;
+
+			if (keys.length>0)
 			{
-				flds = fields;
-				break;
+				keys.filter(filterFields);
 			}
 		}
-		keys = object.keys.filter(filterFields);
 
 		function filterFields(fld)
 		{
