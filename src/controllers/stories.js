@@ -98,8 +98,6 @@
 			// userId: req.params.userId // req.user.sub
 		};
 
-		console.log('Deleting story: ', req.params.id);
-
 		Story.remove(query, function findDeleteStory(err, doc)
 		{
 			if (err)
@@ -128,8 +126,6 @@
 		};
 		var newstory = new Story(newStoryObj);
 
-		console.log('creating story: ',JSON.stringify(newstory));
-
 		newstory.save(function saveStory(err, createdStory)
 		{
 			if (err)
@@ -149,7 +145,7 @@
 		var keys;
 		var flds = {};
 
-		if (object && object.keys)
+		if (object && Object.keys(object))
 		{
 			switch (typeof fields)
 			{
@@ -165,13 +161,15 @@
 					break;
 				}
 			}
-			keys = object.keys;
+			keys = Object.keys(object);
 
 			if (keys.length>0)
 			{
 				keys.filter(filterFields);
 			}
 		}
+
+		return newobj;
 
 		function filterFields(fld)
 		{
